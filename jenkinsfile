@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build Docker Image') {
     steps {
-        bat 'docker build -t Janu99/flask-app:latest .'
+        bat 'docker build -t janu99/flask-app:latest .'
     }
 }
 
@@ -30,7 +30,7 @@ stage('Push Docker Image') {
     steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             bat 'docker login -u %DOCKER_USER% -p %DOCKER_PASS%'
-            bat 'docker push Janu99/flask-app:latest'
+            bat 'docker push janu99/flask-app:latest'
         }
     }
 }
@@ -43,3 +43,4 @@ stage('Deploy to Kubernetes') {
 
     }
 }
+
