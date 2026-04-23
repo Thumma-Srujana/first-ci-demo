@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 
-app = Flask(__name__)
+app = Flask(__name__)  # Jenkins trigger test
 
 @app.route("/")
 def home():
